@@ -72,3 +72,60 @@
 
   var pandaBio = document.querySelector('ul.bio-info')
   pandaBio.remove()
+
+
+PART2
+REMOVING eLEMENTS FROM DOM
+
+1. Panda the Bear is lying about their skills! Take the "time travel" skill off the page to satisfy your personal sense of justice.
+
+  var timeTravel = $('div#time-travel').parent('.bar-default')  
+  timeTravel.css("display", "none")
+
+ADDING ELEMENTS TO THE DOM
+
+1. That drawing of Pikachu is really cute. Let’s duplicate it using cloneNode() and insert it at the bottom of the .portfolio-container using insertAdjacentHTML() or appendChild().
+
+  var pikachu = document.querySelector('img[title="Pikachu"]')
+  var porfolioContainer = document.querySelector('div.portfolio-container')
+  porfolioContainer.appendChild(pikachu2)
+
+2. Wow, that was so satisfying I think we should do it 10 more times. Use a for loop to help you do this.
+
+  for ( step = 0; step < 9; step ++ ){
+    pikachuX = pikachu.cloneNode();
+    porfolioContainer.appendChild(pikachuX)
+  }
+
+3. Let’s add a message about when the page was last updated. We'll do this by appending a new <li> element to the <ul> in the sidebar (you might need to refresh the page to bring back the list items that we emptied out earlier).
+
+  var li = document.querySelector('li.bio-info-item')
+  var ul = document.querySelector('ul.bio-info')
+  var cloneLi = li.cloneNode(true)
+  ul.appendChild(cloneLi)
+
+  var infoTitle = document.querySelector('ul.bio-info li:last-child .bio-info-title')
+  infoTitle.innerText = "Page Last updated on"
+
+  var infoValue = document.querySelector('ul.bio-info li:last-child .bio-info-name')
+  infoValue.innerText = new Date();
+
+  other:::::::::::::
+
+  var listItem = document.createElement('li');
+    var leftSpan = document.createElement('span');
+      var lastUpdated = document.createTextNode('Page last updated on');
+    leftSpan.appendChild(lastUpdated);
+  listItem.appendChild(leftSpan);
+    var rightSpan = document.createElement('span')
+      var dateUpdated = document.createTextNode(Date())
+    rightSpan.appendChild(dateUpdated)
+  listItem.appendChild(rightSpan);
+
+  document.querySelector('.bio-info').appendChild(listItem);
+
+  listItem.setAttribute("class","bio-info-item");
+
+  listItem.setAttribute("class","bio-info-item");
+    leftSpan.setAttribute("class", "bio-info-title");
+    rightSpan.setAttribute("class", "bio-info-value");
